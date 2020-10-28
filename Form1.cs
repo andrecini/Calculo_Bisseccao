@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Trabalho_Marcio
 {
@@ -45,27 +46,28 @@ namespace Trabalho_Marcio
 
             toolTip1.SetToolTip(BtnPI, " Valor de π (3,14159265...).");
 
-            
+
         }
 
         public List<string> Lista = new List<string>();
         public List<string> Raizes = new List<string>();
         public bool messagebox = true;
         public string formulaFinal;
-        public static double Evaluate(string formulaFinal)  
-       {  
-           System.Data.DataTable table = new System.Data.DataTable();  
-           table.Columns.Add("formulaFinal", string.Empty.GetType(), formulaFinal);  
-           System.Data.DataRow row = table.NewRow();  
-           table.Rows.Add(row);  
-           return double.Parse((string)row["formulaFinal"]);  
-       }
+        public static double Evaluate(string formulaFinal)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("formulaFinal", string.Empty.GetType(), formulaFinal);
+            System.Data.DataRow row = table.NewRow();
+            table.Rows.Add(row);
+            return double.Parse((string)row["formulaFinal"]);
+        }
+        
 
-        //***************************************************************************************************
+        
+        //***************************************************************************************************                                 
+        // Botões de Numéricos!          
+        #region 
 
-        // Botões de Numéricos!
-          #region 
-      
         // Botão "1"
         private void Btn1_Click(object sender, EventArgs e)
         {
@@ -284,15 +286,13 @@ namespace Trabalho_Marcio
                 Display.Text += "(X)";
             }
         }
-        #endregion ## //
-
+        #endregion ## //                       
         //***************************************************************************************************
 
 
         //***************************************************************************************************
-
         // Botões de Cálculo básico
-          #region
+        #region
 
         // Botão "÷"
         private void BtnDivide_Click(object sender, EventArgs e)
@@ -367,15 +367,13 @@ namespace Trabalho_Marcio
             }
         }
         #endregion
-
         //***************************************************************************************************
 
 
         //***************************************************************************************************
-
         // Botões de formatação
-           #region
-        
+        #region
+
         // Botão "."
         private void BtnPoint_Click(object sender, EventArgs e)
         {
@@ -443,12 +441,10 @@ namespace Trabalho_Marcio
         }
 
         #endregion
-
         //***************************************************************************************************
 
 
         //***************************************************************************************************
-
         // Botões de Cálculo avançado
         #region
 
@@ -728,10 +724,13 @@ namespace Trabalho_Marcio
             }
         }
         #endregion
-
         //***************************************************************************************************
 
-        private void button31_Click(object sender, EventArgs e)
+
+        //***************************************************************************************************
+        // Botões de Tomada de decisão
+        #region
+        private void BtnSubstituicao_Click(object sender, EventArgs e)
         {
             Display.Text = Display.Text.Replace("α", textBox1.Text);
 
@@ -748,13 +747,7 @@ namespace Trabalho_Marcio
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form2 ajuda = new Form2();
-            ajuda.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnBolzano_Click(object sender, EventArgs e)
         {
             double E = Double.Parse(comboBox2.Text);
             label7.Visible = true;
@@ -788,7 +781,7 @@ namespace Trabalho_Marcio
                 comboBox1.Items.Add(Raizes.ElementAt( j ));
 
                 label7.Visible = false;
-                button2.UseWaitCursor = false;
+                BtnBolzano.UseWaitCursor = false;
         }
 
         private void BtnEqual_Click(object sender, EventArgs e)
@@ -805,23 +798,46 @@ namespace Trabalho_Marcio
             }
 
         }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
+       
+        private void BtnTabela_Click(object sender, EventArgs e)
         {
-                                 
+            Form3 tabela = new Form3();
+            string[] Raizes1 = Raizes.ToArray();
+            DadosCompartilhados.raizes = Raizes1;
+            Hide();
+            tabela.ShowDialog();
         }
 
-        private void Btn_3_Click(object sender, EventArgs e)
+        private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Form1 main = new Form1();
-            this.Width = 1170;
+            Form2 ajuda = new Form2();
+            this.Hide();
+            ajuda.Show();
+
+            //declarando a variavel do tipo StreamWriter para
+            //abrir ou criar um arquivo para escrita
+            StreamWriter x;
+
+            //Colocando o caminho fisico e o nome do arquivo a ser criado
+            //finalizando com .txt
+            string CaminhoNome = "C:\\Users\\AntonioMarlon\\Desktop\\arq01.txt";
+
+            //utilizando o método para criar um arquivo texto
+            //e associando o caminho e nome ao metodo
+            x = File.CreateText(CaminhoNome);
+            Console.ReadKey();
+
+            //escrevendo
+            for (int i = 0; i < Raizes.Count; i++)
+            x.WriteLine(Raizes.ElementAt(i));
+            
+
+            //fechando o arquivo texto com o método .Close()
+            x.Close();
 
         }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    } 
+        #endregion
+        //***************************************************************************************************
+    }
 
 }
