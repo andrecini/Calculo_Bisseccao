@@ -767,11 +767,11 @@ namespace Trabalho_Marcio
 
                 if (aux1a >= 0 && aux1b < 0)
                 {
-                    Raizes.Add($"{i - E}, {i}");
+                    Raizes.Add($"{i - E}; {i}");
                 }
                 else if (aux1a < 0 && aux1b >= 0)
                 {
-                    Raizes.Add($"{i}, {i - E}");
+                    Raizes.Add($"{i}; {i - E}");
                 }
 
                 i += E;
@@ -796,6 +796,8 @@ namespace Trabalho_Marcio
             {
                 groupBox3.Enabled = true;
             }
+
+            DadosCompartilhados.formula = Display.Text;
 
         }
        
