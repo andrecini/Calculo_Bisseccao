@@ -26,5 +26,12 @@ namespace Trabalho_Marcio
         {
 
         }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1 main = new Form1();
+            this.Hide();
+            main.Show();
+        }
     }
 }

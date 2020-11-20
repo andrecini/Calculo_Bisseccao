@@ -200,5 +200,15 @@ namespace Trabalho_Marcio
 
 
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+        }
     }
 }

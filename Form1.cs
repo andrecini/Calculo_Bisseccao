@@ -749,43 +749,58 @@ namespace Trabalho_Marcio
 
         private void BtnBolzano_Click(object sender, EventArgs e)
         {
-            double E = Double.Parse(comboBox2.Text);
-            label7.Visible = true;
-            int a = int.Parse(textBox3.Text);
-            int b = int.Parse(textBox4.Text);
-            double i = a + E;
+            BtnBolzano.UseWaitCursor = true;
 
-            do
+            try
             {
-                string x = i.ToString().Replace(",", ".");
-                string y = (i-E).ToString().Replace(",", ".");
+                double E = Double.Parse(comboBox2.Text);
+                label7.Visible = true;
+                double a = double.Parse(textBox3.Text.Replace(",", "."));
+                double b = double.Parse(textBox4.Text.Replace(",", "."));
+                double i = a + E;
 
-                string alfa = Display.Text.Replace("X", x);
-                string beta = Display.Text.Replace("X", y);
-                double aux1a = Convert.ToDouble(EvalCSCode.Eval(alfa));
-                double aux1b = Convert.ToDouble(EvalCSCode.Eval(beta));
-
-                if (aux1a >= 0 && aux1b < 0)
+                do
                 {
-                    Raizes.Add($"{i - E}; {i}");
-                }
-                else if (aux1a < 0 && aux1b >= 0)
-                {
-                    Raizes.Add($"{i}; {i - E}");
-                }
+                    string x = i.ToString().Replace(",", ".");
+                    string y = (i - E).ToString().Replace(",", ".");
 
-                i += E;
-            } while (i <= b);
+                    string alfa = Display.Text.Replace("X", x);
+                    string beta = Display.Text.Replace("X", y);
+
+                    double aux1a, aux1b;
+
+                     aux1a = Convert.ToDouble(EvalCSCode.Eval(alfa));
+                     aux1b = Convert.ToDouble(EvalCSCode.Eval(beta));
+                    
+
+                    if (aux1a >= 0 && aux1b < 0)
+                    {
+                        Raizes.Add($"{i - E}; {i}");
+                    }
+                    else if (aux1a < 0 && aux1b >= 0)
+                    {
+                        Raizes.Add($"{i}; {i - E}");
+                    }
+
+                    i += E;
+                } while (i <= b);
 
                 for (int j = 0; j < Raizes.Count; j++)
-                comboBox1.Items.Add(Raizes.ElementAt( j ));
+                    comboBox1.Items.Add(Raizes.ElementAt(j));
 
                 label7.Visible = false;
                 BtnBolzano.UseWaitCursor = false;
+
+                BtnTabela.Enabled = true;
+            }
+            catch
+            {
+                MessageBox.Show("Digite um valor válido", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
         }
 
         private void BtnEqual_Click(object sender, EventArgs e)
-        {
+        {    
             if (Display.Text.IndexOf("X") == -1 && Display.Text.IndexOf("x") == -1)
             {
                 double aux = Convert.ToDouble(EvalCSCode.Eval(Display.Text));
@@ -815,28 +830,6 @@ namespace Trabalho_Marcio
             Form2 ajuda = new Form2();
             this.Hide();
             ajuda.Show();
-
-            //declarando a variavel do tipo StreamWriter para
-            //abrir ou criar um arquivo para escrita
-            StreamWriter x;
-
-            //Colocando o caminho fisico e o nome do arquivo a ser criado
-            //finalizando com .txt
-            string CaminhoNome = "C:\\Users\\AntonioMarlon\\Desktop\\arq01.txt";
-
-            //utilizando o método para criar um arquivo texto
-            //e associando o caminho e nome ao metodo
-            x = File.CreateText(CaminhoNome);
-            Console.ReadKey();
-
-            //escrevendo
-            for (int i = 0; i < Raizes.Count; i++)
-            x.WriteLine(Raizes.ElementAt(i));
-            
-
-            //fechando o arquivo texto com o método .Close()
-            x.Close();
-
         }
         #endregion
         //***************************************************************************************************

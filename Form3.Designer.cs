@@ -87,6 +87,7 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(48, 22);
             this.toolStripButton2.Text = "AJUDA";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripSeparator1
             // 
@@ -119,6 +120,7 @@
             this.cmb1.Name = "cmb1";
             this.cmb1.Size = new System.Drawing.Size(63, 21);
             this.cmb1.TabIndex = 2;
+            this.cmb1.SelectedIndexChanged += new System.EventHandler(this.cmb1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -160,6 +162,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(757, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 36);
@@ -182,6 +185,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.TabelaBisseccao);
             this.Name = "Form3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TabelaBisseccao)).EndInit();

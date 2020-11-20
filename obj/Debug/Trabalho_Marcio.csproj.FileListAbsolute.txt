@@ -10,3 +10,5 @@ C:\Users\andre_000\source\repos\Trabalho_Marcio\obj\Debug\Trabalho_Marcio.exe
 C:\Users\andre_000\source\repos\Trabalho_Marcio\obj\Debug\Trabalho_Marcio.pdb
 C:\Users\andre_000\source\repos\Trabalho_Marcio\obj\Debug\Trabalho_Marcio.Form2.resources
 C:\Users\andre_000\source\repos\Trabalho_Marcio\obj\Debug\Trabalho_Marcio.Form3.resources
+C:\Users\andre_000\source\repos\Trabalho_Marcio\obj\Debug\Trabalho_Marcio.Form4.resources
+C:\Users\andre_000\source\repos\Trabalho_Marcio\obj\Debug\Trabalho_Marcio.Form5.resources
